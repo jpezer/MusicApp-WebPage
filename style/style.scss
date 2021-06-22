@@ -1,0 +1,313 @@
+/******************************
+variables
+******************************/
+$navPlava: #09192c; 
+$tamnoPlava: #0b193c;
+$pink: #f91257;
+$bjela: white;
+$svetloSiva: #f8f8f8;
+$fontColor: #0b193c;
+$violet: #383c6e;
+$font: 16px;
+$padding: 80px 0;
+$fontFamily: 'Montserrat', sans-serif;
+$transition: .5s ease;
+
+/******************************
+mixins
+******************************/
+@mixin flex($justify,$align,$direction) {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+}
+
+@mixin btn {
+  padding: 20px 40px;
+  font-size: 1rem;
+  background: $pink;
+  color: $bjela;
+  border: none;
+  text-transform: uppercase;
+  margin-top: 20px;
+  cursor: pointer;
+  border-radius: 40px;
+  letter-spacing: 2px;
+  &:hover{
+    background: $violet;
+    transition: $transition;
+  }
+}
+
+/******************************
+basic styles
+******************************/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-size: $font;
+    color: $fontColor;
+    font-family: $fontFamily;
+    line-height: 1.5;
+}
+ul{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+  color: $bjela;
+  &:hover{
+    color:$pink;
+    transition: $transition;
+  }
+}
+.logo{
+  font-size: 2rem;
+  font-weight: 600;
+  span{
+    color: $pink;
+  }
+}
+.container{
+  width: 80%;
+  margin: auto;
+}
+h2{
+  font-size: 3rem;
+  line-height: 1.1;
+  @media(max-width:768px){
+    font-size: 2rem;
+  }
+}
+
+/******************************
+nav
+******************************/
+nav{
+  background: $navPlava;
+  @include flex(space-between, center, row);
+  padding: 30px 60px;
+  @media(max-width:768px){
+    @include flex(center, center, column);
+    padding: 20px;
+  }
+  & > a{
+    @extend .logo;
+  }
+  ul{
+    @include flex(space-between, center, row);
+    li{
+      margin-left: 50px;
+      @media(max-width:768px){
+        margin: 5px;
+      }
+    }
+  }
+}
+
+
+/******************************
+footer
+******************************/
+footer{
+  background: $navPlava;
+  text-align: center;
+  padding: $padding;
+  p{
+    color: $bjela;
+    margin: 30px 0;
+    font-size: .8rem;
+  }
+  a{
+    margin: 0 20px;
+    font-size: 1.2rem;
+  }
+}
+
+/******************************
+header
+******************************/
+.mainHeader{
+  background: $tamnoPlava;
+  color: $bjela;
+  padding: 0 60px;
+  @include flex(space-between, center, row);
+  @media(max-width:768px){
+    padding: 20px;
+  }
+  div{
+    flex: 0 0 45%;
+    @media(max-width:768px){
+      flex: 0 0 100%;
+    }
+    img{
+      width: 100%;
+      padding: 30px 0;
+    }
+    h1{
+      font-size: 3rem;
+      span{
+        color: $pink;
+      }
+      @media(max-width:768px){
+        font-size: 2rem;
+      }
+    }
+    button{
+      @include btn;
+    }
+  }
+}
+
+.unlimited{
+  padding: $padding;
+  @include flex(space-between, center, row);
+  article{
+    flex: 0 0 48%;
+    @media(max-width:768px){
+      flex: 0 0 100%;
+    }
+    button{
+      @include btn;
+    }
+  }
+}
+
+/******************************
+hiwHeader
+******************************/
+.hiwHeader{
+  padding: $padding;
+  background: $tamnoPlava;
+  color: $bjela;
+  .container{
+    @include flex(space-between, center, row);
+    div{
+      flex: 0 0 30%;
+      @media(max-width:768px){
+        flex: 0 0 100%;
+      }
+      i{
+        font-size: 3rem;
+        color: $pink;
+        margin: 30px 0;
+      }
+      h3{
+        margin-bottom: 30px;
+        font-size: 1.7rem;
+      }
+    }
+  }
+}
+/******************************
+artists
+******************************/
+.artists{
+  padding: $padding;
+  article:first-child{
+    @include flex(space-between, flex-start, row);
+    h2{
+      flex: 0 0 48%;
+      @media(max-width:768px){
+        flex: 0 0 100%;
+      }
+    }
+    p{
+      flex: 0 0 48%;
+      @media(max-width:768px){
+        flex: 0 0 100%;
+      }
+    }
+  }
+  article:last-child{
+    @include flex(space-between, center, row);
+    margin-top: 50px;
+    div{
+      flex: 0 0 22%;
+      text-align: center;
+      @media(max-width:768px){
+        flex: 0 0 100%;
+      }
+      img{
+        width: 100%;
+        border-radius: 40px;
+      }
+    }
+    
+  }
+}
+/******************************
+subscription
+******************************/
+.subscription{
+  background: $tamnoPlava;
+  padding: $padding;
+  color: $bjela;
+  .container{
+    @include flex(space-between, center, row);
+    div:first-child{
+      flex: 0 0 48%;
+      @media(max-width:768px){
+        flex: 0 0 100%;
+      }
+      h4{
+        color: $pink;
+        font-size: 1.8rem;
+        padding: 15px 0;
+      }
+      button{
+        @include btn;
+      }
+    }
+    div:last-child{
+      flex: 0 0 48%;
+      background: rgba($bjela,.1);
+      border-radius: 30px;
+      padding: 30px;
+      @media(max-width:768px){
+        flex: 0 0 100%;
+        margin-top: 30px;
+      }
+      @include flex(center, center, row);
+      ul{
+        line-height: 3;
+        li::before{
+          font-family: "Font Awesome 5 Free";
+          font-weight: 900;
+          content: "\f058";
+          margin-right: 10px;
+          color: $pink;
+        }
+      }
+    } 
+  }
+}
+/******************************
+concept
+******************************/
+.concept{
+  @extend .artists;
+  article:last-child{
+    @include flex(space-between, center, row);
+    div{
+      flex: 0 0 15%;
+      @media(max-width:768px){
+        flex: 0 0 100%;
+        margin-bottom: 20px;
+      }
+      img{
+        border-radius: 50%;
+        @media(max-width:768px){
+          width: 80%;
+        }
+      }
+    }
+    
+  }
+}
+
